@@ -1,0 +1,793 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c2r4s6.42malaga.com
+Darwin 19.6.0 x86_64
+$> date
+Wed May  4 16:22:26 CEST 2022
+$> gcc --version
+Apple clang version 12.0.0 (clang-1200.0.32.29)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 12.0.0 (clang-1200.0.32.29)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= libft.h=======================================================================
+$> norminette libft.h | grep -E '(Error|Warning)'
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir/libft.h: Error!
+Error: MISALIGNED_FUNC_DECL (line:  25, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  26, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  27, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  28, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  29, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  30, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  31, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  32, col:   5):	Misaligned function declaration
+Error: MISALIGNED_FUNC_DECL (line:  33, col:   5):	Misaligned function declaration
+Norme check failed
+
+= Compiling libft ==============================================================
+$> make re
+rm -f ft_isalpha.o ft_atoi.o ft_isalnum.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memset.o ft_strlen.o ft_strlcat.o ft_strlcpy.o ft_strncmp.o ft_strnstr.o ft_strchr.o ft_strrchr.o ft_tolower.o ft_toupper.o
+rm -f libft.a
+cc    -c -o ft_isalpha.o ft_isalpha.c
+cc    -c -o ft_atoi.o ft_atoi.c
+cc    -c -o ft_isalnum.o ft_isalnum.c
+cc    -c -o ft_isascii.o ft_isascii.c
+cc    -c -o ft_isdigit.o ft_isdigit.c
+cc    -c -o ft_isprint.o ft_isprint.c
+cc    -c -o ft_memset.o ft_memset.c
+ft_memset.c:25:1: warning: non-void function does not return a value [-Wreturn-type]
+}
+^
+1 warning generated.
+cc    -c -o ft_strlen.o ft_strlen.c
+cc    -c -o ft_strlcat.o ft_strlcat.c
+cc    -c -o ft_strlcpy.o ft_strlcpy.c
+cc    -c -o ft_strncmp.o ft_strncmp.c
+cc    -c -o ft_strnstr.o ft_strnstr.c
+cc    -c -o ft_strchr.o ft_strchr.c
+cc    -c -o ft_strrchr.o ft_strrchr.c
+cc    -c -o ft_tolower.o ft_tolower.c
+cc    -c -o ft_toupper.o ft_toupper.c
+ar rc libft.a ft_isalpha.o ft_atoi.o ft_isalnum.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memset.o ft_strlen.o ft_strlcat.o ft_strlcpy.o ft_strncmp.o ft_strnstr.o ft_strchr.o ft_strrchr.o ft_tolower.o ft_toupper.o 
+ranlib libft.a
+
+$> ls -la libft.a
+-rw-r--r--  1 cortiz-s  2022_malaga  13792 May  4 16:22 /Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir/libft.a
+
+= Part1_functions ==============================================================
+
+= ft_atoi ======================================================================
+$> norminette ft_atoi.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/user_output_test04	2022-05-04 16:22:27.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/test04.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1 +1 @@$
+-0$
+\ No newline at end of file$
++548$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./user_exe 10
+$> diff -U 3 user_output_test10 test10.output
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./user_exe 11
+$> diff -U 3 user_output_test11 test11.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/user_output_test11	2022-05-04 16:22:28.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/test11.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1 +1 @@$
+-0$
+\ No newline at end of file$
++47$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 12 ==================================================
+$> ./user_exe 12
+$> diff -U 3 user_output_test12 test12.output
+
+Diff OK :D
+= Test 13 ==================================================
+$> ./user_exe 13
+$> diff -U 3 user_output_test13 test13.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/user_output_test13	2022-05-04 16:22:28.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_atoi/test13.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1 +1 @@$
+-475$
+\ No newline at end of file$
++0$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 14 ==================================================
+$> ./user_exe 14
+$> diff -U 3 user_output_test14 test14.output
+
+Diff OK :D
+= Test 15 ==================================================
+$> ./user_exe 15
+$> diff -U 3 user_output_test15 test15.output
+
+Diff OK :D
+= Test 16 ==================================================
+$> ./user_exe 16
+$> diff -U 3 user_output_test16 test16.output
+
+Diff OK :D
+= Test 17 ==================================================
+$> ./user_exe 17
+$> diff -U 3 user_output_test17 test17.output
+
+Diff OK :D
+= Test 18 ==================================================
+$> ./user_exe 18
+$> diff -U 3 user_output_test18 test18.output
+
+Diff OK :D
+= Test 19 ==================================================
+$> ./user_exe 19
+$> diff -U 3 user_output_test19 test19.output
+
+Diff OK :D
+
+= ft_bzero =====================================================================
+Nothing turned in
+
+= ft_calloc ====================================================================
+Nothing turned in
+
+= ft_isalnum ===================================================================
+$> norminette ft_isalnum.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_isalnum/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_isalpha ===================================================================
+$> norminette ft_isalpha.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_isalpha/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_isascii ===================================================================
+$> norminette ft_isascii.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_isascii/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_isdigit ===================================================================
+$> norminette ft_isdigit.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_isdigit/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_isprint ===================================================================
+$> norminette ft_isprint.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_isprint/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_memccpy ===================================================================
+Nothing turned in
+
+= ft_memchr ====================================================================
+Nothing turned in
+
+= ft_memcmp ====================================================================
+Nothing turned in
+
+= ft_memcpy ====================================================================
+Nothing turned in
+
+= ft_memmove ===================================================================
+Nothing turned in
+
+= ft_memset ====================================================================
+$> norminette ft_memset.c | grep -E '(Error|Warning)'
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir/ft_memset.c: Error!
+Error: NL_AFTER_PREPROC     (line:  14, col:   1):	Preprocessor statement must be followed by a newline
+Norme check failed
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/user_output_test01	2022-05-04 16:22:31.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/test01.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1,2 +1 @@$
+-mem's adress was not returned$
+-jjjjjjjjjjjjjjj$
+\ No newline at end of file$
++cccccjjjjjjjjjj$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/user_output_test02	2022-05-04 16:22:31.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/test02.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1,2 +1 @@$
+-mem's adress was not returned$
+-jjjjjjjjjjjjjjj$
+\ No newline at end of file$
++ccccccccccccccj$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+--- /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/user_output_test03	2022-05-04 16:22:31.000000000 +0200$
++++ /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/test03.output	2022-05-04 16:20:48.000000000 +0200$
+@@ -1,2 +1,7 @@$
+-mem's adress was not returned$
+-jjjjjjjjjjjjjjj$
+\ No newline at end of file$
++$
++$
++$
++$
++$
++$
++jjjjjjjjj$
+\ No newline at end of file$
+
+Diff KO :(
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+Binary files /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/user_output_test04 and /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_memset/test04.output differ$
+
+Diff KO :(
+
+= ft_strchr ====================================================================
+$> norminette ft_strchr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strchr/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strchr/main.c:32:14: error: implicit declaration of function 'ft_strchr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+        if (!(str = ft_strchr(s, c)))
+                    ^
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strchr/main.c:32:14: note: did you mean 'ft_strrchr'?
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir/libft.h:23:7: note: 'ft_strrchr' declared here
+char    *ft_strrchr(const char *s, int c);
+         ^
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strchr/main.c:32:12: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Werror,-Wint-conversion]
+        if (!(str = ft_strchr(s, c)))
+                  ^ ~~~~~~~~~~~~~~~
+2 errors generated.
+
+= ft_strdup ====================================================================
+Nothing turned in
+
+= ft_strlcat ===================================================================
+$> norminette ft_strlcat.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strlcat/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strlcat/main.c:30:18: error: implicit declaration of function 'ft_strlcat' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+        ft_print_result(ft_strlcat(dest, src, size));
+                        ^
+1 error generated.
+
+= ft_strlcpy ===================================================================
+$> norminette ft_strlcpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strlcpy/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strlcpy/main.c:31:18: error: implicit declaration of function 'ft_strlcpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+        ft_print_result(ft_strlcpy(dest, src, size));
+                        ^
+1 error generated.
+
+= ft_strlen ====================================================================
+$> norminette ft_strlen.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strlen/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+
+= ft_strncmp ===================================================================
+$> norminette ft_strncmp.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strncmp/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
+= Test 10 ==================================================
+$> ./user_exe 10
+$> diff -U 3 user_output_test10 test10.output
+
+Diff OK :D
+= Test 11 ==================================================
+$> ./user_exe 11
+$> diff -U 3 user_output_test11 test11.output
+
+Diff OK :D
+
+= ft_strnstr ===================================================================
+$> norminette ft_strnstr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strnstr/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strnstr/main.c:31:14: error: implicit declaration of function 'ft_strnstr' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+        if (!(str = ft_strnstr(big, little, len)))
+                    ^
+/Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strnstr/main.c:31:12: error: incompatible integer to pointer conversion assigning to 'const char *' from 'int' [-Werror,-Wint-conversion]
+        if (!(str = ft_strnstr(big, little, len)))
+                  ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2 errors generated.
+
+= ft_strrchr ===================================================================
+$> norminette ft_strrchr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_strrchr/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+
+= ft_tolower ===================================================================
+$> norminette ft_tolower.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_tolower/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= ft_toupper ===================================================================
+$> norminette ft_toupper.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror /Users/cortiz-s/CURSUS/LIBFT/libftest/tests/Part1_functions/ft_toupper/main.c -L/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir -lft -I/Users/cortiz-s/CURSUS/LIBFT/libftest/tmp_tests_dir
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+
+= Part2_functions ==============================================================
+
+= ft_itoa ======================================================================
+Nothing turned in
+
+= ft_putchar_fd ================================================================
+Nothing turned in
+
+= ft_putendl_fd ================================================================
+Nothing turned in
+
+= ft_putnbr_fd =================================================================
+Nothing turned in
+
+= ft_putstr_fd =================================================================
+Nothing turned in
+
+= ft_split =====================================================================
+Nothing turned in
+
+= ft_strjoin ===================================================================
+Nothing turned in
+
+= ft_strmapi ===================================================================
+Nothing turned in
+
+= ft_strtrim ===================================================================
+Nothing turned in
+
+= ft_substr ====================================================================
+Nothing turned in
+
+= Bonus_functions ==============================================================
+
+= ft_lstadd_back ===============================================================
+Nothing turned in
+
+= ft_lstadd_front ==============================================================
+Nothing turned in
+
+= ft_lstclear ==================================================================
+Nothing turned in
+
+= ft_lstdelone =================================================================
+Nothing turned in
+
+= ft_lstiter ===================================================================
+Nothing turned in
+
+= ft_lstlast ===================================================================
+Nothing turned in
+
+= ft_lstmap ====================================================================
+Nothing turned in
+
+= ft_lstnew ====================================================================
+Nothing turned in
+
+= ft_lstsize ===================================================================
+Nothing turned in
